@@ -101,7 +101,6 @@ var StatisticsLibrary = {
 
 	},
 
-	//clar e bun
 	NewProject : function(userid, projectid, nume, language, datatime)
 	{
 		 var connection = mysql.createConnection(conn);
@@ -169,8 +168,7 @@ var StatisticsLibrary = {
 			});
 	},
 
-	//la asta inca nu am facut conexiunea ok
-	// 'sxasdacascascsacasca','123we'
+
 	RemoveProject : function(projectid,userid,datatime)
 	{
 		 var connection = mysql.createConnection(conn);
@@ -334,9 +332,7 @@ var StatisticsLibrary = {
 			});
 		});
 	},
-	//inca nu am facut conexiunea ok
-	// TypeOperation= 'R'
-		//neterminat
+
 	RunProject: function(userid,projectid,gadgetid,datatime)
 	{
 		 var connection = mysql.createConnection(conn);
@@ -363,6 +359,7 @@ var StatisticsLibrary = {
 				});
 		});
 	},
+
 	//nu am in tabelu operatii un camp pt a arata cu ce gadget face verificarea la fel ca si la share,run etc
 	VerifyProject: function(userid,projectid,gadgetid,datatime)
 	{
@@ -469,7 +466,6 @@ var StatisticsLibrary = {
 
 
 	//EditFile ??
-	//inca nu am facut conexiunea ok
 
 
 	AddGadget: function(userid,gadgetid,datatime,gadgetName)
@@ -558,7 +554,8 @@ var StatisticsLibrary = {
 			});
 		});
 	},
-	//TypeOperation 'C'
+
+	 
 	ConfigureGadget: function(userid,gadgetid,datatime)
 	{
 		 var connection = mysql.createConnection(conn);
