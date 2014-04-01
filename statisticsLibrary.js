@@ -102,7 +102,7 @@ var StatisticsLibrary = {
 
 
 	},
-
+	//StatisticsLibrary.NewProject(userid,projectid,nume,language,datatime);
 	NewProject : function(userid, projectid, nume, language, datatime)
 	{
 		 var connection = mysql.createConnection(conn);
@@ -135,6 +135,8 @@ var StatisticsLibrary = {
 		});
 	},
 		//REDENUMIRE PROJECT..ALTCEVA ce ar mai trebui??
+
+	//StatisticsLibrary.ModifyProject(projectid,nameproject,language,userid,datatime)
 	ModifyProject : function(projectid,nameproject,language,userid,datatime)
 	{
 		 var connection = mysql.createConnection(conn);
@@ -170,7 +172,7 @@ var StatisticsLibrary = {
 			});
 	},
 
-
+	//StatisticsLibrary.RemoveProject(projectid,userid,datatime)
 	RemoveProject : function(projectid,userid,datatime)
 	{
 		 var connection = mysql.createConnection(conn);
@@ -217,6 +219,9 @@ var StatisticsLibrary = {
 		});
 	},
 
+
+
+	//StatisticsLibrary.LogIn(userid,datatime)
 	LogIn : function(userid,datatime)
 	{
 	 var connection = mysql.createConnection(conn);
@@ -238,6 +243,7 @@ var StatisticsLibrary = {
 		});
 	},
 
+	//StatisticsLibrary.LogOut(userid,datatime)
 	LogOut : function(userid,datatime)
 	{
 		 var connection = mysql.createConnection(conn);
@@ -258,6 +264,7 @@ var StatisticsLibrary = {
 		});
 	},
 
+	//StatisticsLibrary.CreateFile(userid,projectid,fileid,filename,datatime);
 	CreateFile : function(userid,projectid,fileid,filename,datatime)
 	{	
 		var connection = mysql.createConnection(conn);
@@ -294,6 +301,7 @@ var StatisticsLibrary = {
 			});
 	},
 
+	//StatisticsLibrary.RenameFile(userid,projectid,fileid,filename,datatime);
 	RenameFile : function(userid,projectid,fileid,filename,datatime)
 	{	
 	 var connection = mysql.createConnection(conn);
@@ -334,7 +342,7 @@ var StatisticsLibrary = {
 			});
 		});
 	},
-
+	//StatisticsLibrary.RunProject(userid,projectid,gadgetid,datatime);
 	RunProject: function(userid,projectid,gadgetid,datatime)
 	{
 		 var connection = mysql.createConnection(conn);
@@ -362,6 +370,7 @@ var StatisticsLibrary = {
 		});
 	},
 
+	//StatisticsLibrary.VerifyProject(userid,projectid,gadgetid,datatime);
 	//nu am in tabelu operatii un camp pt a arata cu ce gadget face verificarea la fel ca si la share,run etc
 	VerifyProject: function(userid,projectid,gadgetid,datatime)
 	{
@@ -392,6 +401,7 @@ var StatisticsLibrary = {
 		});		
 	},
 
+	//StatisticsLibrary.ShareProject(ownerid,userid,projectid,datatime);
 	//nu stiu daca e tocmai ok ca am duplicat toate fisierele si proiectu?!?!
 	ShareProject: function(ownerid,userid,projectid,datatime)
 	{
@@ -469,7 +479,7 @@ var StatisticsLibrary = {
 
 	//EditFile ??
 
-
+	//StatisticsLibrary.AddGadget(userid,gadgetid,datatime,gadgetName);
 	AddGadget: function(userid,gadgetid,datatime,gadgetName)
 	{
 	var connection = mysql.createConnection(conn);	
@@ -502,6 +512,7 @@ var StatisticsLibrary = {
 
 	},
 
+	//StatisticsLibrary.RemoveGadget(userid,gadgetid,datatime);
 	RemoveGadget: function(userid,gadgetid,datatime)
 	{
 		 var connection = mysql.createConnection(conn);
@@ -527,6 +538,8 @@ var StatisticsLibrary = {
 
 		});
 	},
+
+	//StatisticsLibrary.RemoveFile(userid,projectid,fileid,datatime);
 	RemoveFile: function(userid,projectid,fileid,datatime)
 	{
 		 var connection = mysql.createConnection(conn);
@@ -557,7 +570,7 @@ var StatisticsLibrary = {
 		});
 	},
 
-	 
+	 //StatisticsLibrary.ConfigureGadget(userid,gadgetid,datatime);
 	ConfigureGadget: function(userid,gadgetid,datatime)
 	{
 		 var connection = mysql.createConnection(conn);
@@ -590,3 +603,68 @@ var StatisticsLibrary = {
 
 	//AddGadget: function(userid,gadgetid,datatime,gadgetName)
 //StatisticsLibrary.AddGadget('userid_1','gaddetid_1','2014-02-02 16:02:02','placutaRasp');
+function generate_userid(i){
+	i=i % 18+100;
+	var s='';
+	s+='a'+i.toString();
+	return s;
+}
+
+function generate_gadgetid(i){
+	i=i % 10+1000;
+	var s='';
+	s+='g'+i.toString();
+	return s;
+}
+
+function generate_projectid(i){
+	i=i % 21+100;
+	var s='';
+	s+='p'+i.toString();
+	return s;
+}
+
+function generate_datatime(i){
+	i=i % 9+1;
+	var s='2014-0'+i.toString()+'-02 16:02:02';
+	return s;
+}
+
+function generate_fileid(i){
+	i=i % 10+1000;
+	var s='';
+	s+='f'+i.toString();
+	return s;
+}
+
+function generate_filename(i){
+	i=i % 10+1000;
+	var s='';
+	s+='filee'+i.toString();
+	return s;
+}
+
+var i=0;
+for (var ii=0;ii<1;ii++){
+	var userid=generate_userid(ii);
+	var gadgetid=generate_gadgetid(ii);
+	var datatime=generate_datatime(ii);
+	var fileid=generate_fileid(ii);
+
+	//console.log(ii);
+	//StatisticsLibrary.ConfigureGadget(userid,gadgetid,datatime);
+	//StatisticsLibrary.RemoveFile(userid,projectid,fileid,datatime);
+	//StatisticsLibrary.RemoveGadget(userid,gadgetid,datatime);
+	console.log('userid='+userid+'\t gadgetid='+gadgetid+'\t datatime='+datatime+'\t gadgetname='+'gadget'+ii.toString()+'\n');
+	StatisticsLibrary.AddGadget(userid,gadgetid,datatime,'gadget'+ii.toString());
+	//StatisticsLibrary.VerifyProject(userid,projectid,gadgetid,datatime);
+	//StatisticsLibrary.RunProject(userid,projectid,gadgetid,datatime);
+	//StatisticsLibrary.CreateFile(userid,projectid,fileid,filename,datatime);
+	//StatisticsLibrary.NewProject(userid,projectid,nume,language,datatime);
+	//StatisticsLibrary.ModifyProject(projectid,nameproject,language,userid,datatime)
+	//StatisticsLibrary.RemoveProject(projectid,userid,datatime)
+
+
+
+}
+
